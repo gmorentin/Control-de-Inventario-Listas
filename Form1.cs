@@ -71,5 +71,19 @@ namespace CONTROL_DE_INVENTARIO
            txtReporte.Clear();
            txtReporte.Text+= inv.Reporte().ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Productos p = new Productos();
+            p.cantidad = Convert.ToInt16(txtCantidad.Text);
+            p.codigo = Convert.ToInt16(txtCodigo.Text);
+            p.nombre = txtNombre.Text;
+            p.precio = Convert.ToInt16(txtPrecio.Text);
+            inv.AgregarInicio(p);
+            txtCodigo.Clear();
+            txtCantidad.Clear();
+            txtNombre.Clear();
+            txtPrecio.Clear();
+        }
     }
 }

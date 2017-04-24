@@ -100,5 +100,16 @@ namespace CONTROL_DE_INVENTARIO
                 temp.siguiente = nuevo;
             }
         }
+
+        public void AgregarInicio (Productos nuevo)
+        {
+            if (inicio == null)
+                inicio = nuevo;
+            else
+            {
+                nuevo.siguiente = inicio;
+                inicio = nuevo;
+            }
+        }
     }
 }

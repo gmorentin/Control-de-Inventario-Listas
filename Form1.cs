@@ -46,7 +46,7 @@ namespace CONTROL_DE_INVENTARIO
             p.codigo = Convert.ToInt16(txtCodigo.Text);
             p.nombre = txtNombre.Text;
             p.precio = Convert.ToInt16(txtPrecio.Text);
-            //inv.Insertar(p, Convert.ToInt16(txtInsertar.Text));
+            inv.Insertar(p, Convert.ToInt16(txtInsertar.Text));
             txtCodigo.Clear();
             txtCantidad.Clear();
             txtNombre.Clear();

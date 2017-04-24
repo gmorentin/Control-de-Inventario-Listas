@@ -10,15 +10,7 @@ namespace CONTROL_DE_INVENTARIO
     {
         private Productos inicio;
 
-        /*private int _contador;
-        public int contador { get { return _contador; } }
-
-        public Inventario()
-        {
-            _contador = 0;
-        }*/
-
-        public void Agregar(Productos nuevo)
+        /*public void Agregar(Productos nuevo)
         {
             if (inicio == null)
                 inicio = nuevo;
@@ -29,7 +21,23 @@ namespace CONTROL_DE_INVENTARIO
                     temp = temp.siguiente;
                 temp.siguiente = nuevo;
             }
-            }          
+        }*/
+
+        public void Agregar(Productos nuevo)
+        {
+            if (inicio == null)
+                inicio = nuevo;
+            else
+                Agregar(inicio, nuevo);
+        }
+
+        private void Agregar(Productos ultimo,Productos nuevo)
+        {
+            if (ultimo.siguiente == null)
+                ultimo.siguiente = nuevo;
+            else
+                Agregar(ultimo.siguiente, nuevo);
+        }
 
         public Productos Buscar(int codigo)
         {
@@ -59,7 +67,7 @@ namespace CONTROL_DE_INVENTARIO
                 temp = temp.siguiente;
             }
         }
-
+          
         public string Reporte()
         {
             string datos = "";
@@ -72,18 +80,25 @@ namespace CONTROL_DE_INVENTARIO
             return datos;
         }
 
-        /*public void Insertar(Productos p, int posicion)
+        public void Insertar(Productos nuevo, int posicion)
         {
-                if (Buscar(p.codigo) == null)
+            int contador = 1;
+            Productos temp = inicio;
+            if (posicion == 1)
+            {
+                nuevo.siguiente = inicio;
+                inicio = nuevo;
+            }
+            else
+            {
+                while (temp.siguiente != null && contador < posicion - 1)
                 {
-                    Productos aux;
-                    aux = prod[_contador - 1];
-                    for (int i = _contador - 1; i > posicion; i--)
-                        prod[i] = prod[i - 1];
-                    prod[_contador] = aux;
-                    prod[posicion] = p;
-                    _contador++;
+                    temp = temp.siguiente;
+                    contador++;
                 }
-        }*/
+                nuevo.siguiente = temp.siguiente;
+                temp.siguiente = nuevo;
+            }
+        }
     }
 }
